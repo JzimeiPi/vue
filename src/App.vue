@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="app">
     App 
+    <h1>vue +</h1>
   </div>
 </template>
 
@@ -10,3 +11,11 @@ export default {
 }
 </script>
 
+<style scoped>
+@import './assets/css/reset.css';
+
+/* css3语法兼容问题 待解决 */
+h1 {
+  transform: translate(100px, 100px)
+}
+</style>

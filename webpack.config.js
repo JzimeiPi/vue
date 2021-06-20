@@ -1,6 +1,8 @@
 const path = require('path')
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -14,11 +16,27 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader'
+      },
+      {
+        test: /\.(jpg|jpeg|png|gif|svg)$/,
+        loader: 'url-loader',
+        options: {
+          name: '[name].[ext]',
+          limit: 10240
+        }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'stylus-loader']
       }
     ]
   },
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new HtmlWebpackPlugin({
+      template: './main.html'
+    }),
+    new CleanWebpackPlugin()
   ],
   resolve: {
     alias: {
