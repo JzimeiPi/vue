@@ -14,7 +14,6 @@ export default {
 <style scoped>
 @import './assets/css/reset.css';
 
-/* css3语法兼容问题 待解决 */
 h1 {
   transform: translate(100px, 100px)
 }
