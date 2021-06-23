@@ -1,26 +1,26 @@
 const path = require('path')
-
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const webpack = require('webpack')
 
 module.exports = {
-  mode: 'development',
-  entry: './src/main.js',
+  entry: '/src/main.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     filename: 'bundle.js'
   },
-  devServer: {
-    contentBase: path.join(__dirname, 'index.html'),
-    open: true,
-    port: '8888',
-    hot: true
-  },
-  devtool: 'eval',
   module: {
     rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader'
@@ -57,11 +57,11 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'main.html'),
+      // template: path.join(__dirname, '/main.html'), //ERROR in Entry module not found: Error: Can't resolve '/Users/gq/Documents/vue/build/main.html' in '/Users/gq/Documents/vue'
+      template: '/main.html',
       filename: 'index.html'
     }),
     new CleanWebpackPlugin(),
-    new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
     alias: {
