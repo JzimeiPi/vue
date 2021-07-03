@@ -1,21 +1,15 @@
 <template>
-  <div class="app">
-    App 
-    <h1>vue +</h1>
+  <div id="root">
+    <router-link to="/home">Home</router-link>
+    <router-link to="/login">Login</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'App',
+  name: 'App'
 }
 </script>
 
-<style scoped>
-@import './assets/css/reset.css';
-
-h1 {
-  transform: translate(100px, 100px)
-}
-</style>
