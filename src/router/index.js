@@ -11,6 +11,18 @@ const routes = [
 ]
 
 // 创建实例 (传入 键 必须为routes)
-export default new VueRouter({
+const router = new VueRouter({
   routes
 })
+
+// 导航守卫（全局）
+router.beforeEach((to, from, next) => {
+  const list = ['/login', '/home', '/']
+  if (!list.includes(to.path)) {
+    next({path: '/login'})
+  } else {
+    next()
+  }
+})
+
+export default router
