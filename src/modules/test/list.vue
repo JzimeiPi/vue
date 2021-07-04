@@ -2,6 +2,7 @@
   <div>
     <h1>This is List Component</h1>
     <div
+      :class="i%2 && 'list-item'"
       style="display:flex;justify-content:space-between;padding:10px 30px;border-bottom:1px solid #999;"
       v-for="(item, i) in list"
       :key="i"
@@ -43,3 +44,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.list-item {
+  background-color: #f1f1f1;
+}
+</style>

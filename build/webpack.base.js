@@ -34,22 +34,13 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
+        test: /\.(css|scss)$/,
         use: [
           'style-loader', 
           'css-loader', 
           'postcss-loader',
-          // {
-          //   loader: 'postcss-loader',
-          //   options: {
-          //     postcssOptions: {
-          //       plugins: [
-          //         require('autoprefixer')
-          //       ]
-          //     }
-          //   }
-          // },
-          'stylus-loader'
+          // 'stylus-loader',
+          'sass-loader'
         ]
       }
     ]
