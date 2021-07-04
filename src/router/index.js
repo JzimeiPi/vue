@@ -19,7 +19,8 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   const list = ['/login', '/home', '/']
   if (!list.includes(to.path)) {
-    next({path: '/login'})
+    // next({path: '/login'}) // 先放开权限
+    next()
   } else {
     next()
   }
